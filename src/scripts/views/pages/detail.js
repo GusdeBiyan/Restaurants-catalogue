@@ -20,10 +20,13 @@ const Detail = {
                     <img src='./images/hero-2.webp' alt="Hero Restaurant Image " crossorigin="anonymous">
              </picture>
          </div>
+         <div class="detail-container">
            <h2 tabindex="0" class="label-menu">Detail Restaurant</h2>
            <skeleton-detail></skeleton-detail>
            <div id="resto" class="resto">
            </div>
+
+         </div>
         </div>
         <div id="likeButtonContainer"></div>
         <div class="addReview">

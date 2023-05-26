@@ -1,3 +1,4 @@
+/* eslint-disable prefer-regex-literals */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -13,6 +14,7 @@ module.exports = {
     app: path.resolve(__dirname, 'src/scripts/index.js'),
     // sw: path.resolve(__dirname, 'src/scripts/sw.js'),
   },
+  stats: { warnings: false },
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
@@ -75,6 +77,20 @@ module.exports = {
     }),
     new WorkboxWebpackPlugin.GenerateSW({
       swDest: './sw.bundle.js',
+      skipWaiting: true,
+      clientsClaim: true,
+      runtimeCaching: [
+        {
+          urlPattern: new RegExp('^https://restaurant-api.dicoding.dev/'),
+          handler: 'StaleWhileRevalidate',
+          options: {
+            cacheName: 'RestoCatalogue-V1',
+            cacheableResponse: {
+              statuses: [0, 200],
+            },
+          },
+        },
+      ],
     }),
     new ImageminWebpackPlugin({
       plugins: [

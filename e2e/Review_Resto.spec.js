@@ -2,7 +2,7 @@
 Feature('Reviewing Restaurants');
 
 Before(({ I }) => {
-  I.amOnPage('/');
+  I.amOnPage('/#/');
   I.waitForElement('.see-detail a');
   I.seeElement('.see-detail a');
   const firstResaurant = locate('.see-detail a').first();
@@ -10,7 +10,7 @@ Before(({ I }) => {
 });
 
 Scenario('Add a review restaurants fill empty', ({ I }) => {
-  I.seeElement('#form-review');
+  I.waitForElement('#form-review');
 
   I.seeElement('#userName');
   I.fillField('#userName', '');
@@ -26,7 +26,7 @@ Scenario('Add a review restaurants fill empty', ({ I }) => {
 });
 
 Scenario('Add a review restaurants fill not empty', ({ I }) => {
-  I.seeElement('#form-review');
+  I.waitForElement('#form-review');
 
   I.seeElement('#userName');
   I.fillField('#userName', 'Gusde');

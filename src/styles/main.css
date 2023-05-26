@@ -393,9 +393,9 @@ footer {
   display: grid;
   grid-template-columns: 1fr;
   gap: 18px 16px;
-  box-shadow: 5px 3px 20px 4px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 5px 3px 20px 4px rgba(0, 0, 0, 0.2);
   background-color: white;
-  border-radius: 15px;
+  border-radius: 15px; */
 
 }
 
@@ -602,8 +602,7 @@ skeleton-list skeleton-item .skeleton-item__content__description {
 
 skeleton-detail {
   padding: 20px;
-  display: block;
-  margin: 0 auto;
+  margin: 0 ;
   width: 100%;
   max-width: 800px;
   display: grid;
@@ -664,4 +663,16 @@ skeleton-detail .skeleton-detail__description {
 
 .resto-item__not__found {
  font-size: 15px;
+}
+
+.detail-container{
+   margin: 0 auto;
+  width: 100%;
+  max-width: 800px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px 16px;
+  box-shadow: 5px 3px 20px 4px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  border-radius: 15px;
 }

@@ -15,42 +15,46 @@ Scenario('showing empty liked restos', ({ I }) => {
 
 Scenario('liking one movie', async ({ I }) => {
   I.see('There are no restaurants to display', '.resto-item__not__found');
-  I.amOnPage('/');
+  I.amOnPage('/#/');
   pause();
-  I.seeElement('.see-detail a');
+  I.waitForElement('.see-detail a');
   const firstFilm = locate('.see-detail a').first();
   I.click(firstFilm);
 
+  I.waitForElement('.resto__title');
   const firstFilmTitle = await I.grabTextFrom('.resto__title');
+
   I.seeElement('#likeButton');
   I.click('#likeButton');
 
   I.amOnPage('/#/like');
-  I.seeElement('.resto-item');
+  I.waitForElement('.resto-item');
   const likedFilmTitle = await I.grabTextFrom('.resto__title');
   assert.strictEqual(firstFilmTitle, likedFilmTitle);
 });
 
 Scenario('unliking a restaurant', async ({ I }) => {
   I.see('There are no restaurants to display', '.resto-item__not__found');
-  I.amOnPage('/');
+  I.amOnPage('/#/');
   pause();
-  I.seeElement('.see-detail a');
+  I.waitForElement('.see-detail a');
   const firstResaurant = locate('.see-detail a').first();
   I.click(firstResaurant);
 
+  I.waitForElement('.resto__title');
   const firstFilmTitle = await I.grabTextFrom('.resto__title');
+
   I.seeElement('#likeButton');
   I.click('#likeButton');
 
   I.amOnPage('/#/like');
-  I.seeElement('.resto-item');
+  I.waitForElement('.resto-item');
   const likedRestaurantTitle = await I.grabTextFrom('.resto__title');
 
   assert.strictEqual(firstFilmTitle, likedRestaurantTitle);
 
   I.click(firstResaurant);
-  I.seeElement('#likeButton');
+  I.waitForElement('#likeButton');
   I.click('#likeButton');
   I.amOnPage('/#/like');
 
